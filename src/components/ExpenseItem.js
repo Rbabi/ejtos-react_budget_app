@@ -1,6 +1,9 @@
 import React, { useContext } from 'react';
+import { FcPlus } from 'react-icons/fc';
+import { FaMinusCircle } from "react-icons/fa";
 import { TiDelete } from 'react-icons/ti';
 import { AppContext } from '../context/AppContext';
+
 
 const ExpenseItem = (props) => {
     const { dispatch, currency } = useContext(AppContext);
@@ -23,20 +26,14 @@ const ExpenseItem = (props) => {
             payload: expense
         });
     
-   
-        
-
-      
-
- 
     }
 
     return (
         <tr>
         <td>{props.name}</td>
         <td>{currency}{props.cost}</td>
-        <td><button onClick={event=> increaseAllocation(props.name)}>+</button></td>
-        <td><button onClick={event=> decreaseAllocation(props.name)}>-</button></td>
+        <td><FcPlus size='1.5em' onClick={event=> increaseAllocation(props.name)}></FcPlus></td>
+        <td><FaMinusCircle color="red" size='1.3em'onClick={event=> decreaseAllocation(props.name)}></FaMinusCircle></td>
         <td><TiDelete size='1.5em' onClick={handleDeleteExpense}></TiDelete></td>
         </tr>
     );
